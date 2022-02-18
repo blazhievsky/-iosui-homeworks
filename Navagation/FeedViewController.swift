@@ -11,6 +11,9 @@ class FeedViewController: UIViewController {
     
     let post = Post(title: "My first post")
     var postButton = UIButton()
+
+   
+    
     
     @objc func openPost() {
         let postVC = PostViewController()

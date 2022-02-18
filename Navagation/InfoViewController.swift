@@ -10,7 +10,7 @@ import UIKit
 class InfoViewController: UIViewController {
     
     let buttonAler = UIButton()
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray
