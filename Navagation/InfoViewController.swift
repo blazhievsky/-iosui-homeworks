@@ -10,6 +10,7 @@ import UIKit
 class InfoViewController: UIViewController {
     
     let buttonAler = UIButton()
+    
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class InfoViewController: UIViewController {
         view.addSubview(buttonAler)
         
     }
+  
     
     @objc func openAlert() {
         let alert = UIAlertController(title: "Choose", message: "Yes or No?", preferredStyle: .alert)
@@ -36,6 +38,8 @@ class InfoViewController: UIViewController {
         alert.addAction(actionAlertNo)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
     
     
 }
