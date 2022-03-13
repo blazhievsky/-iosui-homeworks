@@ -53,8 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         profileNavigationVC.navigationBar.standardAppearance = appearance;
         profileNavigationVC.navigationBar.scrollEdgeAppearance = profileNavigationVC.navigationBar.standardAppearance
         
-        
-        
         tabBarController.tabBar.backgroundColor = UIColor.white
         
         return true

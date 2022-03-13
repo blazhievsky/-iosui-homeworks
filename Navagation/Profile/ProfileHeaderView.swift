@@ -96,7 +96,6 @@ extension ProfileHeaderView {
             statusTextField.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
             
-            
             statusSetButton.topAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: 20),
             statusSetButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             statusSetButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
