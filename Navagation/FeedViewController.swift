@@ -11,33 +11,73 @@ class FeedViewController: UIViewController {
     
     let post = Post(title: "My first post")
     var postButton = UIButton()
-
-   
-    
-    
-    @objc func openPost() {
-        let postVC = PostViewController()
-        navigationController?.pushViewController(postVC, animated: true)
-        postVC.postTitle = post
-    }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemCyan
         self.title = "Feed"
-        
-        postButton = UIButton(frame: CGRect(x: view.frame.width/2-100, y: view.frame.height/2-25, width: 200, height: 50))
-        postButton.layer.cornerRadius = 25
-        postButton.backgroundColor = .red
-        postButton.setTitle("Post", for: .normal)
-        postButton.addTarget(self, action: #selector(openPost), for: .touchUpInside)
-        view.addSubview(postButton)
-    
-        
+        configure()
     }
-    
-    
-    
 }
+
+//MARK: - Private Methods
+
+private extension FeedViewController {
+    func configure() {
+        lazy var buttonRedToPost: UIButton = {
+            let button = UIButton()
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.layer.cornerRadius = 25
+            button.backgroundColor = .systemRed
+            button.setTitle("Post", for: .normal)
+            button.addTarget(self, action: #selector(openPost), for: .touchUpInside)
+            return button
+        }()
+        
+        lazy var buttonGreenToPost: UIButton = {
+            let button = UIButton()
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.layer.cornerRadius = 25
+            button.backgroundColor = .systemGreen
+            button.setTitle("Post", for: .normal)
+            button.addTarget(self, action: #selector(openPost), for: .touchUpInside)
+            return button
+        }()
+        
+        lazy var stackView: UIStackView = {
+            let stackView = UIStackView()
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.axis = .vertical
+            stackView.spacing = 10
+            stackView.addArrangedSubview(buttonRedToPost)
+            stackView.addArrangedSubview(buttonGreenToPost)
+            return stackView
+        }()
+        
+        view.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.widthAnchor.constraint(equalToConstant: 300),
+            stackView.heightAnchor.constraint(equalToConstant: 200),
+            
+            buttonRedToPost.widthAnchor.constraint(equalToConstant: 150),
+            buttonRedToPost.heightAnchor.constraint(equalToConstant: 100),
+            
+            buttonGreenToPost.widthAnchor.constraint(equalTo: buttonRedToPost.widthAnchor),
+            buttonGreenToPost.heightAnchor.constraint(equalTo: buttonRedToPost.heightAnchor)
+            
+        ])
+    }
+    //MARK: - @objc methods
+    @objc func openPost() {
+        let postVC = PostViewController()
+        navigationController?.pushViewController(postVC, animated: true)
+        postVC.postTitle = post
+    }
+}
+
+
+
+

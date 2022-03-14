@@ -32,7 +32,7 @@ class ProfileHeaderView: UIView {
     }()
     
     lazy private var statusLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.textColor = .gray
@@ -68,9 +68,7 @@ class ProfileHeaderView: UIView {
         button.addTarget(self, action:  #selector(buttonPressed), for: .touchUpInside)
         return button
     }()
-    
 }
-
 // MARK: - Methods
 extension ProfileHeaderView {
     func configureView() {
@@ -90,22 +88,22 @@ extension ProfileHeaderView {
             
             nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
             nameLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
-
+            
             statusLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
             statusLabel.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 26),
-
+            
             statusTextField.bottomAnchor.constraint(equalTo: statusSetButton.topAnchor, constant: -17),
             statusTextField.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 16),
             statusTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
-
+            
             statusSetButton.topAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: 20),
             statusSetButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             statusSetButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            statusSetButton.heightAnchor.constraint(equalToConstant: 50),
+            statusSetButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
+    //MARK: - @objc methods
     @objc
     private func statusTextChanged() {
         statusText = statusTextField.text ?? ""
@@ -117,6 +115,6 @@ extension ProfileHeaderView {
     @objc
     private func buttonPressed() {
         statusLabel.text = statusTextField.text
-      }
+    }
 }
 
