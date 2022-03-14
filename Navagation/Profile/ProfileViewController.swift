@@ -13,33 +13,54 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
+        self.title = "User Profile"
+        view.backgroundColor = .systemBackground
+        profileHeaderView.configureView()
         configur()
-      
+        addButton()
     }
 }
 
 //MARK: - Private methods
 private extension ProfileViewController {
     func configur() {
-        self.title = "Profile"
-        self.view.backgroundColor = .systemBackground
         
-        self.view.addSubview(profileHeaderView)
-        profileHeaderView.configureView()
+        view.addSubview(profileHeaderView)
+        
         profileHeaderView.backgroundColor = .lightGray
         NSLayoutConstraint.activate([
-            
-            profileHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            profileHeaderView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
-            profileHeaderView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
-            profileHeaderView.heightAnchor.constraint(equalToConstant: 200)
-        
-            
+            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
         ])
     }
 }
-//avatarImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
-//avatarImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-//avatarImage.widthAnchor.constraint(equalToConstant: 100),
-//avatarImage.heightAnchor.constraint(equalTo: avatarImage.widthAnchor),
+
+private extension ProfileViewController {
+    func addButton() {
+        
+        let button: UIButton = {
+            let button = UIButton()
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.backgroundColor = .systemBlue
+            button.layer.cornerRadius = 4
+            button.layer.shadowColor = UIColor.black.cgColor
+            button.layer.shadowOffset = CGSize(width: 4, height: 4)
+            button.layer.shadowOpacity = 0.7
+            button.layer.shadowRadius = 4
+            button.setTitleColor(.lightGray, for: .highlighted)
+            button.setTitle("КНОПКА", for: .normal)
+            return button
+        }()
+        
+        view.addSubview(button)
+        
+        NSLayoutConstraint.activate([
+            button.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            button.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+}
